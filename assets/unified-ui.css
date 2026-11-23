@@ -1,0 +1,190 @@
+/* Nihongo Studio — shared Phase E / Phase F interface. */
+.learning-app {
+  --ns-navy:#0e2038; --ns-navy-2:#132b49; --ns-blue:#176cc7;
+  --ns-text:#112c4a; --ns-muted:#60758d; --ns-line:#dce6f1;
+  --ns-canvas:#f3f7fc; --ns-shadow:0 13px 34px rgba(17,47,84,.065);
+  color:var(--ns-text); background:var(--ns-canvas);
+  font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:14px;line-height:1.6;
+}
+.learning-app .shell {min-height:100vh;display:flex}
+.learning-app .sidebar {
+  position:fixed;inset:0 auto 0 0;top:0;left:0;bottom:0;
+  width:252px;flex:0 0 252px;height:100dvh;display:flex;flex-direction:column;
+  z-index:90;overflow-y:auto;background:var(--ns-navy);color:#d6e3f1;
+  border-right:1px solid rgba(255,255,255,.08);padding:0;scrollbar-width:thin;
+}
+.learning-app .brand {
+  display:flex;align-items:center;gap:12px;min-height:89px;
+  margin:0;padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.09);
+  color:#fff;text-decoration:none;
+}
+.learning-app .brand-mark,.learning-app .brand-symbol {
+  width:43px;height:43px;min-width:43px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#2581e8,#1051a5);color:white;
+  border:0;border-radius:13px;font:800 23px/1 Arial,sans-serif;
+  box-shadow:0 6px 17px rgba(0,0,0,.19);
+}
+.learning-app .brand-copy {display:flex;flex-direction:column;min-width:0}
+.learning-app .brand-name,.learning-app .brand-copy strong {
+  display:block;font-size:15px;letter-spacing:-.3px;color:#fff;font-weight:800;line-height:1.4;
+}
+.learning-app .brand-sub,.learning-app .brand-copy small {
+  display:block;font-size:9px;letter-spacing:1.6px;color:#97bbdf;font-weight:800;line-height:1.6;
+}
+.learning-app .nav-label,.learning-app .navcaption {
+  display:block;margin:0;padding:25px 20px 10px;color:#759ac4;
+  font:850 10px/1.4 ui-sans-serif,system-ui,sans-serif;letter-spacing:1.7px;
+  text-transform:uppercase;
+}
+.learning-app .sidebar nav {display:block;padding:0 11px}
+.learning-app .nav-link,.learning-app .sidebar .nav a {
+  display:flex;align-items:center;gap:12px;width:100%;min-height:46px;
+  margin:2px 0;padding:11px 12px;border:1px solid transparent;
+  border-radius:10px;background:transparent;color:#bbcee2;
+  font-size:12.5px;font-weight:650;line-height:1.35;text-decoration:none;
+}
+.learning-app .nav-link svg,.learning-app .sidebar .nav a svg {
+  width:18px;height:18px;flex:0 0 18px;opacity:.9;
+}
+.learning-app .nav-link:hover,.learning-app .sidebar .nav a:hover {
+  background:#183a5c;color:white;
+}
+.learning-app .nav-link.active,.learning-app .sidebar .nav a.active,
+.learning-app .nav-link[aria-current="page"],.learning-app .sidebar .nav a[aria-current="page"] {
+  background:#1b4d82;border-color:#3a74ae;color:#fff;
+  box-shadow:inset 3px 0 0 #74b8ff;
+}
+.learning-app .sidebar .count,.learning-app .sidebar .pill {
+  margin-left:auto;color:#b9d5f5;font-size:10px;font-weight:800;
+  background:#ffffff14;border:1px solid #ffffff18;border-radius:6px;padding:2px 5px;
+}
+.learning-app .sidebar-bottom,.learning-app .side-bottom {
+  display:flex;flex-direction:column;gap:9px;
+  margin-top:auto;padding:18px 21px 24px;border-top:1px solid #ffffff1b;
+  color:#d2e1ee;
+}
+.learning-app .sidebar-bottom a,.learning-app .side-bottom>a,
+.learning-app .sidebar .phase-navlink {
+  display:flex;align-items:center;gap:10px;color:#d2e1ee;
+  font-size:11px;min-height:32px;text-decoration:none;font-weight:600;
+}
+.learning-app .sidebar-bottom a:hover,.learning-app .side-bottom>a:hover {color:#fff}
+.learning-app .sidebar-bottom svg,.learning-app .side-bottom>a svg {width:16px;height:16px}
+.learning-app .sidebar-kicker,.learning-app .side-progress {font-size:11px;font-weight:700;color:#e3effc}
+.learning-app .sidebar-footnote,.learning-app .side-bottom>small {font-size:10px;color:#91b4d6}
+.learning-app .sidebar .meter,.learning-app .side-bottom .progress-mini {width:100%;height:5px;background:#ffffff22;border-radius:9px;overflow:hidden}
+.learning-app .sidebar .meter span,.learning-app .side-bottom .progress-mini span{display:block;height:100%;background:#69acfc;border-radius:9px}
+.learning-app .main {flex:1;min-width:0;margin-left:252px;width:calc(100% - 252px);max-width:none}
+.learning-app .topbar {
+  height:69px;min-height:69px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(18px,3.1vw,40px);gap:12px;background:#ffffffed;
+  border-bottom:1px solid var(--ns-line);position:sticky;top:0;z-index:60;
+  backdrop-filter:blur(12px);
+}
+.learning-app .crumb,.learning-app .top-title {
+  color:#52708f;font-size:12px;display:flex;align-items:center;gap:9px;
+  min-width:0;line-height:1.4;
+}
+.learning-app .crumb strong,.learning-app .top-title strong {color:#123456;font-weight:750}
+.learning-app .top-actions {display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.learning-app .toplink,.learning-app .icon-button,
+.learning-app .topbar .top-search,.learning-app .topbar .voice-top-trigger {
+  background:#fff;border:1px solid var(--ns-line);border-radius:9px;
+  color:#1c4772;box-shadow:none;
+}
+.learning-app .toplink:hover,.learning-app .topbar .top-search:hover,
+.learning-app .topbar .voice-top-trigger:hover {background:#eaf3fd;border-color:#bdd6f0}
+.learning-app .content {
+  max-width:1280px;min-width:0;margin:0 auto;
+  padding:32px clamp(18px,3.1vw,40px) 60px;
+}
+.learning-app .hero {
+  background:linear-gradient(115deg,#10243e 0%,#173657 65%,#205085 100%);
+  border:1px solid rgba(255,255,255,.1);border-radius:20px;
+  padding:35px clamp(23px,3vw,40px);min-height:274px;
+  box-shadow:0 18px 40px rgba(21,49,82,.11);
+}
+.learning-app .hero h1 {font-size:clamp(29px,3.1vw,44px);line-height:1.15;letter-spacing:-1.35px;max-width:770px}
+.learning-app .hero p {max-width:690px;line-height:1.75}
+.learning-app .panel,.learning-app .lesson-card,.learning-app .module-card,
+.learning-app .page-head,.learning-app .stat,.learning-app .session-card {
+  border:1px solid var(--ns-line);box-shadow:var(--ns-shadow);
+  border-radius:15px;background:#fff;
+}
+.learning-app .footer {border-top:1px solid var(--ns-line);color:#637991}
+.learning-app .sidebar a:focus-visible,.learning-app button:focus-visible,.learning-app a:focus-visible,
+.learning-app input:focus-visible,.learning-app select:focus-visible {
+ outline:3px solid #5cabf4;outline-offset:3px;
+}
+/* Phase F overview uses the exact same chrome as the lesson pages. */
+.learning-app .overview-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0 30px}
+.learning-app .overview-card {
+ display:flex;flex-direction:column;gap:10px;min-height:210px;padding:23px 21px;
+ border:1px solid var(--ns-line);background:#fff;border-radius:15px;
+ box-shadow:var(--ns-shadow);text-decoration:none;transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.learning-app .overview-card:hover {transform:translateY(-2px);border-color:#92b9e6;box-shadow:0 17px 33px #15385d17}
+.learning-app .overview-card .module-id {font-size:10px;color:var(--ns-blue);font-weight:900;letter-spacing:1.4px;text-transform:uppercase}
+.learning-app .overview-card h3 {font-size:17px;color:#173551;margin:2px 0 0;line-height:1.4}
+.learning-app .overview-card p {color:#627a92;font-size:12.5px;line-height:1.7;margin:0}
+.learning-app .overview-card .go {display:flex;align-items:center;gap:8px;margin-top:auto;color:#125eaf;font-size:12px;font-weight:800}
+.learning-app .overview-card .go svg {width:15px;height:15px}
+.learning-app .overview-stats {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0 30px}
+.learning-app .overview-stat {border:1px solid var(--ns-line);background:#fff;border-radius:12px;padding:17px 18px;box-shadow:var(--ns-shadow)}
+.learning-app .overview-stat strong {display:block;font-size:22px;line-height:1.2;color:#15568e}
+.learning-app .overview-stat span {display:block;font-size:11px;color:#687f95;margin-top:7px}
+.learning-app .overview-heading {margin:24px 0 10px}
+.learning-app .overview-heading .eyebrow {display:block;margin-bottom:7px}
+.learning-app .overview-heading h2 {font-size:21px;line-height:1.4;margin:0;color:#12304e}
+.learning-app .overview-heading p {margin:3px 0 0;font-size:13px;color:#667d94}
+.learning-app .overview-actions {display:flex;flex-wrap:wrap;gap:12px;margin-top:17px}
+.learning-app .overview-actions a {display:inline-flex;padding:10px 13px;border:1px solid #c6d8e9;border-radius:10px;background:white;text-decoration:none;font-weight:700;color:#154c87;font-size:12px}
+.learning-app .overview-actions a:hover {background:#eaf3fd}
+@media(max-width:1100px){.learning-app .overview-grid {grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){
+ .learning-app .sidebar {width:272px;flex-basis:272px;transform:translateX(-105%);transition:transform .22s ease;box-shadow:none}
+ .learning-app .sidebar.open {transform:translateX(0);box-shadow:12px 0 44px #071d3970}
+ .learning-app .main {margin-left:0;width:100%;flex:1}
+ .learning-app .content {padding:22px 18px 48px}
+ .learning-app .topbar {padding:0 18px}
+ .learning-app .top-title,.learning-app .crumb {max-width:100%;overflow:hidden}
+ .learning-app .overview-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .learning-app .topbar {padding:0 12px;gap:8px}
+ .learning-app .content {padding:16px 13px 42px}
+ .learning-app .hero {padding:25px 21px;min-height:255px;border-radius:16px}
+ .learning-app .hero h1 {font-size:29px;letter-spacing:-.9px}
+ .learning-app .hero p {font-size:12px;line-height:1.7}
+ .learning-app .overview-grid {grid-template-columns:1fr;gap:12px}
+ .learning-app .overview-card {min-height:165px;padding:19px}
+ .learning-app .overview-stats {gap:9px}
+ .learning-app .overview-stat {padding:13px}
+ .learning-app .overview-actions {flex-direction:column}
+ .learning-app .overview-actions a {justify-content:center}
+}
+@media(max-width:345px){
+ .learning-app .topbar {padding:0 9px}
+ .learning-app .top-actions {gap:4px}
+ .learning-app .top-title strong,.learning-app .crumb strong {font-size:10px;overflow-wrap:anywhere}
+}
+@media print{.learning-app .sidebar,.learning-app .topbar {display:none!important}.learning-app .main {margin:0;width:100%}}
+
+.learning-app .overview-home-link,.learning-app .overview-switch-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:37px;padding:7px 11px;border:1px solid var(--ns-line);border-radius:9px;background:white;color:#1c4772;font-size:11px;font-weight:750;text-decoration:none}
+.learning-app .overview-home-link svg,.learning-app .overview-switch-link svg{width:16px;height:16px}
+.learning-app .overview-home-link:hover,.learning-app .overview-switch-link:hover{background:#eaf3fd}
+.learning-app .mobile-menu{display:none}
+@media(max-width:800px){.learning-app .mobile-menu{display:inline-grid;place-items:center}}
+@media(max-width:490px){.learning-app .overview-switch-link{display:none}}
+
+.learning-app .overview-actions a{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;min-height:42px;line-height:1.3;padding:10px 15px;border:1px solid #ffffff29;background:#fff;color:#124575;font-size:12px;font-weight:750;box-shadow:none}
+.learning-app .overview-actions a+ a{color:#fff;background:#ffffff12;border-color:#ffffff30}
+.learning-app .overview-actions a:hover{background:#eaf4ff}
+.learning-app .overview-actions a+ a:hover{background:#ffffff20}
+.learning-app .overview-actions a svg{display:block;width:17px;height:17px;flex:0 0 17px}
+.learning-app .overview-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:1px}
+.learning-app .overview-card-top .overview-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;background:#eaf4ff;color:#1472c6;border:1px solid #dbeaf8}
+.learning-app .overview-card-top .overview-icon svg{width:20px;height:20px}
+
+@media(max-width:560px){.learning-app .hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px}.learning-app .hero-actions .btn{width:100%;flex:0 0 auto;justify-content:center;min-height:43px}}
