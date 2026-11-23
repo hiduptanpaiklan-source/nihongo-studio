@@ -88,3 +88,29 @@
 @media(max-width:1250px){.session-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.session-group{padding:18px}.session-group-head{align-items:start;flex-direction:column;gap:8px}.quiz-backrow{align-items:start;flex-direction:column}.quiz-session-title{text-align:left}}
 @media(max-width:590px){.session-grid{grid-template-columns:1fr}.session-group{padding:14px;border-radius:13px}.session-group-head h2{font-size:17px}.session-card{padding:15px}.session-card>strong{font-size:14px}.session-filter{gap:6px}.session-filter .chip{font-size:10px}.active-session{scroll-margin-top:74px}.result-actions{flex-direction:column;width:100%}.result-actions button{width:100%}}
+
+/* Perbaikan tata letak untuk layar ponsel: soal langsung terlihat. */
+@media (max-width:800px) {
+  .quiz-side { order:2; }
+}
+@media (max-width:590px) {
+  .number-card .speak { width:36px; height:36px; }
+  .audio-play { width:36px; min-width:36px; height:36px; }
+}
+@media (max-width:360px) {
+  .topbar { padding:0 10px; gap:6px; }
+  .top-title { flex:1 1 auto; min-width:0; gap:7px; }
+  .top-title > span:not(.dot), .top-title > .dot { display:none; }
+  .top-title strong { font-size:10.5px; line-height:1.15; overflow-wrap:anywhere; }
+  .top-actions { flex:0 0 auto; gap:5px; }
+  .top-search { width:32px; min-width:32px; flex:0 0 32px; }
+  .topbar .icon-button, .topbar .voice-top-trigger { width:34px; height:34px; min-width:34px; padding:0; }
+}
+
+/* Pilihan fase pada halaman utama: penambahan non-destruktif. */
+.phase-choice{margin-bottom:24px}.phase-choice-head{margin-bottom:16px}.phase-choice-kicker{font-size:10px;font-weight:900;color:#1766be;letter-spacing:1.6px}.phase-choice h2{font-size:25px;letter-spacing:-.7px;margin:8px 0 4px;color:#182e47}.phase-choice p{font-size:12px;color:#6c7f95;margin:0}.phase-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.phase-choice-card{min-width:0;display:flex;flex-direction:column;align-items:start;gap:10px;border:1px solid #dce6f1;background:#fff;border-radius:15px;padding:21px 22px;text-decoration:none;color:#223b56;box-shadow:0 5px 18px #183d5e09;transition:.2s}.phase-choice-card:hover,.phase-choice-card:focus-visible{border-color:#78a8e8;transform:translateY(-2px);outline:none}.phase-choice-card.phase-e-card{border-color:#bbd6f5;background:linear-gradient(120deg,#eff6ff,#ffffff)}.phase-choice-card .phase-tag{font-size:10px;color:#0e64bd;font-weight:850;letter-spacing:1.2px}.phase-choice-card strong{font-size:19px;letter-spacing:-.4px}.phase-choice-card>span:not(.phase-tag){font-size:12px;line-height:1.7;color:#60748d}.phase-choice-card b{color:#115eb0;font-size:12px;margin-top:2px}@media(max-width:590px){.phase-choice-grid{grid-template-columns:1fr}.phase-choice h2{font-size:22px}.phase-choice-card{padding:18px}}
+
+/* Phase-specific navigation and accessible focus styles. */
+.phase-navlink{display:flex;align-items:center;gap:11px;min-height:37px;color:#b7d2ed;font-size:11px;font-weight:750;text-decoration:none;padding:6px 0}.phase-navlink:hover{color:#fff}.phase-navlink svg{width:17px;height:17px;flex:none}.footer a{color:#286cbb;text-decoration:none;font-weight:800}.footer a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #73aff3;outline-offset:2px}.sidebar-bottom{padding-top:15px}
+
+@media(max-width:520px){.top-title>span:not(.dot){display:none}.top-title>.dot{display:none}.top-title strong{font-size:12px;white-space:normal}.top-title{min-width:0;max-width:100%}}
