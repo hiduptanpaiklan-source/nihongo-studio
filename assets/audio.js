@@ -24,8 +24,27 @@ function refreshVoices(){
 function getSaved(key,fallback){try{return localStorage.getItem(key)||fallback}catch{return fallback}}
 function save(key,val){try{localStorage.setItem(key,String(val))}catch{}}
 function stop(){if('speechSynthesis' in window)window.speechSynthesis.cancel();current=null;currentButton?.classList.remove('is-speaking');currentButton=null;}
+// Prefer the canonical hiragana from the lesson data when a number is read.
+// Standalone kanji such as 四 and 八 can otherwise be voiced as shi and ya.
+function numberReading(text,button){
+ const trimmed=String(text||'').trim();
+ const card=button?.closest?.('[data-number-card]');
+ if(card){
+   const kana=(card.querySelector('.number-kana')?.textContent||'').trim();
+   if(kana)return kana;
+   const numeral=(card.querySelector('.number-tag')?.textContent||'').replace(/[^0-9]/g,'');
+   const match=window.CONTENT?.numbers?.find?.(item=>String(item.value)===numeral);
+   if(match?.kana)return match.kana;
+ }
+ // Exact matches only: do not alter 四月, 八人, or any other compound words.
+ const item=window.CONTENT?.numbers?.find?.(item=>item.kanji===trimmed);
+ if(item?.kana)return item.kana;
+ if(trimmed==='四')return 'よん';
+ if(trimmed==='八')return 'はち';
+ return trimmed;
+}
 function play(text,button){
- text=String(text||'').trim();if(!text)return;
+ text=numberReading(text,button);if(!text)return;
  if(!('speechSynthesis' in window)){toast('Speech playback is not supported by this browser.');return}
  refreshVoices();
  if(!voices.length){open();toast('Japanese voice unavailable. Enable Japanese speech in your device settings.');return}
